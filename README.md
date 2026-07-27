@@ -1,19 +1,11 @@
-# Soccer Aging Curves ⚽📈
+soccer-aging-curves
 
-**When do soccer players peak — and do clubs overpay for players past their prime?**
+The goal of this project is to determine at what age soccer players are at their best value using data-science. The project also includes how each soccer position's value changes as they age and determining the differences between each position. Also, the project helps to understand the rate at which players reach their peak value as well as the rate at which each player's value declines.
 
-A data-science research project studying how player performance changes with age
-across positions, and whether the transfer market prices that aging correctly.
-
-## Research questions
-
-1. **Peak age by position:** At what age do goalkeepers, defenders, midfielders, and
-   forwards reach their performance peak?
-2. **Shape of the curve:** How steep is the rise before the peak and the decline after it?
 3. **Market efficiency:** Do market values / transfer fees track the performance curve, or
    do clubs systematically overpay for post-peak players?
 
-## Method (high level)
+
 
 1. Collect player-season performance, ages, and market values from the Transfermarkt
    *Player Scores* dataset (all joined by `player_id`).
