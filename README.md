@@ -5,7 +5,9 @@ The goal of this project is to determine at what age soccer players are at their
 3. **Market efficiency:** Do market values / transfer fees track the performance curve, or
    do clubs systematically overpay for post-peak players?
 
+Exploratory Data Analysis Notebook
 
+The purpose of the exploratory data analysis notebook is to use Transfermrkt data imported from Kaggle to analyze every imported player's performance as they age. 
 
 1. Collect player-season performance, ages, and market values from the Transfermarkt
    *Player Scores* dataset (all joined by `player_id`).
@@ -63,10 +65,10 @@ All sources are free. Raw data is git-ignored; `src/data_collection.py` reproduc
 
 ## Status
 
-✅ M0 (environment) and M1 (data acquisition) complete — raw tables are staged
+ M0 (environment) and M1 (data acquisition) complete — raw tables are staged
 in `data/raw/`.
 
-✅ Extensive raw-data EDA in `notebooks/01_exploration.ipynb` (75 cells): schema/missingness
+ Extensive raw-data EDA in `notebooks/01_exploration.ipynb` (75 cells): schema/missingness
 per table, position-mapping coverage, the full scoping funnel (leagues → seasons →
 `MIN_MINUTES` → age range), and the age × position sample-size table, plus deep dives
 on market value by age for each position, by league, and by nationality. Final
@@ -74,13 +76,13 @@ analysis-ready sample: **6,480 player-seasons across 2,970 unique players**. Con
 a real thin-tail risk (goalkeepers under ~24, all positions past ~35, and even more
 pronounced once sliced by league/nationality) that curve fitting must account for.
 
-✅ M2 (cleaning & feature engineering) implemented in `src/analysis.py`
+ M2 (cleaning & feature engineering) implemented in `src/analysis.py`
 (`build_player_seasons`, `attach_market_value`): reproduces the same 6,480
 player-season / 2,970 player sample as the EDA scoping funnel, computes per-90
 metrics, and attaches each season's nearest market valuation. Output is saved to
 `data/processed/player_seasons.csv`.
 
-✅ `notebooks/02_features_and_clustering.ipynb` (new): runs the M2 pipeline,
+ `notebooks/02_features_and_clustering.ipynb` (new): runs the M2 pipeline,
 analyzes which age shows the largest drop in market value (peak ≈ age 21, largest
 post-peak drop ≈ age 31, both overall and per position), and clusters player-seasons
 into 4 interpretable profiles (e.g. young developing players, prime attackers, prime
