@@ -7,7 +7,7 @@ The goal of this project is to determine at what age soccer players are at their
 
 Exploratory Data Analysis Notebook
 
-The purpose of the exploratory data analysis notebook is to use Transfermrkt data imported from Kaggle to analyze every imported player's performance as they age. 
+The purpose of the exploratory data analysis notebook is to use Transfermrkt data imported from Kaggle to analyze every imported player's performance as they age. The datasets imported through Kaggle are separated into various csv's that each individually contribute to understanding the value of players compared to their age. The csv labeled "players" includes many features such as each imported players name, position, and club that they play for. These features are important in identifying players to help make graphs that help to better understand 
 
 1. Collect player-season performance, ages, and market values from the Transfermarkt
    *Player Scores* dataset (all joined by `player_id`).
