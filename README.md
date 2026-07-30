@@ -1,13 +1,12 @@
 soccer-aging-curves
 
-The goal of this project is to determine at what age soccer players are at their best value using data-science. The project also includes how each soccer position's value changes as they age and determining the differences between each position. Also, the project helps to understand the rate at which players reach their peak value as well as the rate at which each player's value declines.
-
-3. **Market efficiency:** Do market values / transfer fees track the performance curve, or
-   do clubs systematically overpay for post-peak players?
+The goal of this project is to determine at what age soccer players are at their best value using data-science. The project also includes how each soccer position's value changes as they age and determining the differences between each position. Also, the project helps to understand the rate at which players reach their peak value as well as the rate at which each player's value declines. The project also answers the question of whether teams overpay for players that are past their "prime" or peak performance and whether a players financial value matches their performances.
 
 Exploratory Data Analysis Notebook
 
 The purpose of the exploratory data analysis notebook is to use Transfermrkt data imported from Kaggle to analyze every imported player's performance as they age. The datasets imported through Kaggle are separated into various csv's that each individually contribute to understanding the value of players compared to their age. The csv labeled "players" includes many features such as each imported players name, position, and club that they play for. These features are important in identifying players to help make graphs that help to better understand the relationship between a player's value and age. Identifying every player's position can additionally help to understand the second question of how each position's value changes as they age. The csv labeled "appearances" includes features such as each player's goals, assists, and the amount of minutes that they play per season. These features can be helpful in understanding each player's form or value at a certain time. When a player is at their best, they would be scoring and assisting more often than any other year in their career and playing more minutes than any other year in their career. Lastly, the csv labeled "valuations" includes features such as a player's market value and their domestic cup competitions. These can also help to understand how well a player is doing at a given time. A players market value is a quantifiable number to understand the value that they bring to a club and a club doing well in their domestic competition is a good indicator of it's player's current value. 
+
+
 
 1. Collect player-season performance, ages, and market values from the Transfermarkt
    *Player Scores* dataset (all joined by `player_id`).
