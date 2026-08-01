@@ -8,84 +8,8 @@ The purpose of the exploratory data analysis notebook is to use Transfermrkt dat
 
 Using the data imported from Kaggle, it is now time to create graphs that demonstrate the relationship between a player's age and their performances. The first graph represents the relationship between the "raw value" of players with each core position which includes goalies, defenders, midfielders, and attackers. It surprised me to see that defenders had the highest "raw value" because I predicted that the midfielders would have the highest "raw value", followed by the attackers. The appearances vs players graph was also interesting to look at. I instantly noticed the large bar above 0 indicating that most professional soccer players spend the careers without an appearance or with very little appearances. The age distribution and position distribution charts help to understand the spread of players used through the dataset as most players in the dataset are defenders in their 20s. The median market value graph shows a more detailed analysis of the value of players as they age by position. Most positions show a downward parabolic trend in the graph where their value peaks between the ages of 25 to 30, but one key thing to notice is how low the value of goalkeepers is in comparison to the rest of the positions. Using the log value for player market values shows a more detailed and spread out view in analyzing player market values. When the same graph becomes log-based, we can see that the rate of decline is greater than the rate of incline. This means that the value of players decreases quicker than when the value increases when the players are younger. Additionally, we can see that defenders decline the fastest while goalkeepers decline the slowest which makes sense as a goalkeeper does not have to rely on their stamina as much as the other positions would. The box plots and the value spread also help to understand how each position's variability changes through each age range. The league-based analysis includes using players in the top leagues of England, Germany, France, Italy, and Spain. The graphs show that while Serie-A, the Italian league, contains the most players, it has the lowest median market value and that the Premier League, the English league, has the highest median market value. The mean market value by position x league graph shows a combined visual of how each position in each league differs in it's market value. Finally, using the players from the dataset, we can compare the average market value with each nation to see which nations have the most valuable players. 
 
+Featuring and clustering notebook
 
 
 
-All analysis is done in **Jupyter notebooks** (pandas + Matplotlib), run
-top-to-bottom. See `protocol.md` for how we work and `PLAN.md` for the milestones.
 
-## Project structure
-
-```
-soccer-aging-curves/
-├── CLAUDE.md         # project charter (role, mission, stack, conventions)
-├── PLAN.md           # milestones, dependencies, complexity, risks
-├── protocol.md       # working protocol (update README after each commit, etc.)
-├── data/
-│   ├── raw/          # untouched downloaded data (git-ignored)
-│   └── processed/    # cleaned, analysis-ready data (git-ignored)
-├── notebooks/        # THE workspace — all analysis, modeling, and figures
-├── src/              # small helpers the notebooks import (config, data download)
-├── figures/          # exported charts for the paper
-└── paper/            # research write-up (outline + drafts)
-```
-
-## Getting started
-
-```bash
-python -m venv .venv
-# Windows PowerShell:
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
-
-## Data sources
-
-**Primary:** David Cariboo's [*Player Scores* dataset](https://www.kaggle.com/datasets/davidcariboo/player-scores)
-(Transfermarkt) on Kaggle. Age, market value, and basic performance are already
-joined by `player_id`, which removes the live-scraping and name-matching risks
-of a from-scratch FBref pipeline. Downloaded via [`kagglehub`](https://pypi.org/project/kagglehub/).
-
-**Optional enrichment (later):** advanced metrics (xG, progressive actions) from
-FBref / Understat via [`soccerdata`](https://soccerdata.readthedocs.io).
-
-All sources are free. Raw data is git-ignored; `src/data_collection.py` reproduces it.
-
-**Dataset version used:** Kaggle `davidcariboo/player-scores`, version 671
-(fetched 2026-07-08) — 48,381 players, 1,889,407 appearances, 656,302 valuations,
-88,944 games, 66 competitions.
-
-> **Kaggle auth:** you need a free Kaggle API token. Create one at
-> <https://www.kaggle.com/settings> → *Create New Token*, then save `kaggle.json`
-> to `%USERPROFILE%\.kaggle\kaggle.json` (or set `KAGGLE_USERNAME` / `KAGGLE_KEY`).
-
-## Status
-
- M0 (environment) and M1 (data acquisition) complete — raw tables are staged
-in `data/raw/`.
-
- Extensive raw-data EDA in `notebooks/01_exploration.ipynb` (75 cells): schema/missingness
-per table, position-mapping coverage, the full scoping funnel (leagues → seasons →
-`MIN_MINUTES` → age range), and the age × position sample-size table, plus deep dives
-on market value by age for each position, by league, and by nationality. Final
-analysis-ready sample: **6,480 player-seasons across 2,970 unique players**. Confirmed
-a real thin-tail risk (goalkeepers under ~24, all positions past ~35, and even more
-pronounced once sliced by league/nationality) that curve fitting must account for.
-
- M2 (cleaning & feature engineering) implemented in `src/analysis.py`
-(`build_player_seasons`, `attach_market_value`): reproduces the same 6,480
-player-season / 2,970 player sample as the EDA scoping funnel, computes per-90
-metrics, and attaches each season's nearest market valuation. Output is saved to
-`data/processed/player_seasons.csv`.
-
- `notebooks/02_features_and_clustering.ipynb` (new): runs the M2 pipeline,
-analyzes which age shows the largest drop in market value (peak ≈ age 21, largest
-post-peak drop ≈ age 31, both overall and per position), and clusters player-seasons
-into 4 interpretable profiles (e.g. young developing players, prime attackers, prime
-defensive/GK regulars, aging declining-value veterans) — exploratory work ahead of
-the formal M4/M5 milestones.
-
-Next up: M3 (re-run EDA sanity checks against the processed table) and M4
-(aging-curve modeling — quadratic + LOESS peak detection). See `PLAN.md` for the
-full milestone breakdown and `protocol.md` for how notebooks are verified before
-each commit.
