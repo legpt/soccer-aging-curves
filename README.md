@@ -10,6 +10,6 @@ Using the data imported from Kaggle, it is now time to create graphs that demons
 
 Featuring and clustering notebook
 
-
+The goal of this notebook is to use engineering to better understand our interpretation of how the value's of soccer players appreciate and depreciate as they age.
 
 
