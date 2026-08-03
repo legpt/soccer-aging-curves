@@ -10,6 +10,6 @@ Using the data imported from Kaggle, it is now time to create graphs that demons
 
 Featuring and clustering notebook
 
-The goal of this notebook is to use engineering to better understand our interpretation of how the value's of soccer players appreciate and depreciate as they age.
+The goal of this notebook is to use engineering to better understand our interpretation of how the value's of soccer players appreciate and depreciate as they age. In this notebook, we can take a further look into each player's individual seasons to understand how their value and form changes as they age. First, we created a table that held basic information of each individual season including a player's goals, assists, and market value. The age drop analysis makes a graph of the change in market value by age to fully understand when each player's value decreases the most. It found that at the age of 31, the value of players drops the most and each year after 31 result in declines of market values, with the age 36 being a strange outlier. Using the per-position graphs, we can see that the drop is extremely visible in both goalkeepers and defenders, whereas it is only slightly visible to both midfielders and forwards since their player market values do not change as exceedingly. 
 
 
